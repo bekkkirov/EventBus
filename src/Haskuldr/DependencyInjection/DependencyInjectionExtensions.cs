@@ -1,23 +1,20 @@
 ﻿using System.Reflection;
-using EventBus.Abstractions;
+using Haskuldr.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace EventBus.DependencyInjection;
+namespace Haskuldr.DependencyInjection;
 
 public static class DependencyInjectionExtensions
 {
     public static IServiceCollection AddEventBus(
         this IServiceCollection services,
-        List<Assembly> assemblies,
-        bool onlyPublicHandlers = true)
+        params Assembly[] assemblies)
     {
         var baseHandlerType = typeof(IEventHandler<>);
         
         foreach (var assembly in assemblies)
         {
-            var implementations = assembly.GetImplementations(
-                baseHandlerType,
-                onlyPublicHandlers);
+            var implementations = assembly.GetImplementations(baseHandlerType);
 
             foreach (var result in implementations)
             {

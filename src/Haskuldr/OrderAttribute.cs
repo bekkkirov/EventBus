@@ -1,4 +1,4 @@
-﻿namespace EventBus;
+﻿namespace Haskuldr;
 
 [AttributeUsage(AttributeTargets.Class)]
 public sealed class OrderAttribute(int order) : Attribute

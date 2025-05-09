@@ -1,4 +1,6 @@
-﻿namespace EventBus.Abstractions;
+﻿using Haskuldr.Abstractions.EventBus;
+
+namespace Haskuldr.Abstractions;
 
 public interface IEventBus
 {
